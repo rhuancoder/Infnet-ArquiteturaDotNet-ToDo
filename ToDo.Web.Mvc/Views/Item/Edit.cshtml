@@ -1,0 +1,25 @@
+﻿@model ToDo.Web.Mvc.Models.EditItemModel;
+
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<h3>Editar</h3>
+<div class="col-md-4">
+    <form asp-action="Edit">
+        <div class="form-group">
+            <label asp-for="Done" class="control-label">Tarefa realizada?</label>
+            <input asp-for="Done" type="checkbox" checked="@ViewBag.item.Done" />
+        </div>
+        <div class="form-group">
+            <label class="control-label">Tarefa</label>
+            <input asp-for="Description" class="form-control" readonly value="@ViewBag.item.Description" />
+            <input asp-for="Id" class="form-control" hidden value="@ViewBag.item.Id" />
+        </div>
+        <br/>
+        <div class="form-group">
+            <input type="submit" value="Editar" action="Edit" class="btn btn-primary" />
+            <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+        </div>
+    </form>
+</div>

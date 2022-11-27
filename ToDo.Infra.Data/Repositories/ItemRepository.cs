@@ -39,6 +39,31 @@ namespace ToDo.Infra.Data.Repositories
 
         }
 
+        public async Task<Item> GetAsync(Guid id)
+        {
+            Item result;
+            var parameter = new { Id = id };
+            var query = "select * from Items where id = @Id";
+            using (var con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    result = await con.QueryFirstOrDefaultAsync<Item>(query, parameter);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    con.Close();
+                }
+                return result;
+            };
+
+        }
+
         public async Task AddAsync(Item item)
         {
             var query = "insert into Items(Id, Description, Done, CreatedAt) values(@Id, @Description, @Done, @CreatedAt)";
@@ -70,6 +95,29 @@ namespace ToDo.Infra.Data.Repositories
                 {
                     con.Open();
                     count = await con.ExecuteAsync(query, item);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    con.Close();
+                }
+            };
+        }
+
+        public async Task DeleteAsync(Guid id)
+        {
+            var count = 0;
+            var parameter = new { Id = id };
+            var query = "delete from Items where id = @Id";
+            using (var con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    count = await con.ExecuteAsync(query, parameter);
                 }
                 catch (Exception)
                 {

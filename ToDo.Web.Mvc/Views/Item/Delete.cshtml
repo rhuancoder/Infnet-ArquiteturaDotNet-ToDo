@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Deletar";
+}
+
+<h3>Deletar</h3>
+<h5>Tem certeza que deseja deletar o item?</h5>
+<div>
+    <form asp-action="Delete">
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+        </div>
+    </form>
+</div>
