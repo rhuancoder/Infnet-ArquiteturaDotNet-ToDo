@@ -1,4 +1,4 @@
-# Infnet-ArquiteturaDotNet
+# Infnet-ArquiteturaDotNet-ToDo
 INFNET Pós Arquitetura de Software - Projeto da disciplina Arquitetura .NET
 
 Curso: Pós Live em Arquitetura de Software - 2022
